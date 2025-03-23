@@ -11,13 +11,24 @@
     <div id="terminal"></div>
 
     <script>
-        const terminal = new Terminal();
+        const terminal = new Terminal({
+            cursorBlink: true, // Optionally enable cursor blinking
+            rows: 30,          // Set number of rows
+            cols: 80           // Set number of columns
+        });
+
         terminal.open(document.getElementById('terminal'));
         terminal.write('Welcome to your web terminal!\r\n');
 
-        // Optionally, add input handling if you want local or simulated commands
-        terminal.onData(data => {
-            terminal.write(data);
+        // Handle key events
+        terminal.onData(function (data) {
+            if (data === '\r') {  // Enter key
+                terminal.write('\r\n');
+            } else if (data === '\u007F') {  // Backspace key (ASCII 127)
+                terminal.write('\b \b'); // Correct handling of backspace
+            } else {
+                terminal.write(data);
+            }
         });
     </script>
 </body>
