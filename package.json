@@ -1,1 +1,18 @@
-npm init -y
+{
+  "name": "web-terminal",
+  "version": "1.0.0",
+  "description": "A simple terminal emulator in the browser",
+  "main": "index.html",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xterm": "^4.12.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "14.x"
+  }
+}
